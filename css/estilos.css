@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 @font-face {
     font-family: 'Fuente Examen';
@@ -204,7 +205,7 @@ h3{
     font-weight: 700;
     font-size: 22px;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 10px 0 10px 0;
 }
 p{
     margin-bottom: 5px;
@@ -217,4 +218,7 @@ p{
     margin-top: 30px;
     box-shadow: 5px 5px 1px 1px #9791917e;
     background:linear-gradient(whitesmoke, rgb(238, 178, 178), 80%) ;
+}
+.texto h2{
+margin: 10px 0 10px 0;
 }
