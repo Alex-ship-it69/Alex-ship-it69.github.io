@@ -29,8 +29,61 @@
     <section class="ejercicios">
         <h2>Variables y operadores</h2><br>
         <p>1. Escribir un programa que pregunte al usuario su nombre, y luego lo salude.</p>
+        <pre>
+            package logica;
+
+import java.util.Scanner;
+
+public class Saludo {
+
+	public static void main(String[] args) {
+		
+		String nombre;
+		
+		Scanner teclado = new Scanner (System.in);
+		
+		System.out.println("¿Como te llamas?");
+		
+		nombre = teclado.nextLine();
+		
+		System.out.println("Buenas tardes, " + nombre);
+		
+		
+		
+	}
+
+}
+
+        </pre>
         <p>2. Calcular el perí­metro y área de un rectángulo dada su base y su altura.</p>
-        
+        <pre>
+package logica;
+
+import java.util.Scanner;
+
+public class Perimetro {
+
+	public static void main(String[] args) {
+		
+		int base, altura;
+		
+		Scanner teclado = new Scanner (System.in);
+		
+		System.out.println("Este programa calcula el perímetro y el área de un rectángulo");
+		System.out.println("Introduzca la base de su rectángulo (en metros)");
+		base = teclado.nextInt();
+		System.out.println("Introduzca la altura de su rectángulo (en metros)");
+		altura = teclado.nextInt();
+		
+		System.out.println("El área de su rectángulo es " + (base*altura) + " metros y el perímetro es de " + (2*base+2*altura) + " metros");
+		
+		
+		
+
+	}
+
+}
+</pre>
         <p>3. Dados dos números, mostrar la suma, resta, división y multiplicación de ambos.
         </p>
         
