@@ -222,3 +222,9 @@ p{
 .texto h2{
 margin: 10px 0 10px 0;
 }
+.declaracion{
+    color: green;
+}
+.funcionColor{
+    color: blue;
+}
