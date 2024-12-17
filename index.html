@@ -268,12 +268,140 @@
         </div>
     
     </section>
-    <br>
+    <section class="bloque1">
+        <div class="texto">
+            
+            <h2 id="Funciones">Funciones</h2>
+            <p>La programación estructurada es un paradigma de la programación (un protocolo de reglas que deben seguirse a la hora de estructurar el código) que define las partes de un programa como módulos (o bloques). Imagina un edificio de 10 plantas. Construirlo es difícil si se hacen las diez plantas a la vez, pero si primero se realiza la primera planta, después la segunda y así sucesivamente, el trabajo se facilita. En la programación estructurada es similar, el programa se crea a partir de "plantas" o bloques, cada una constituyendo una parte del "edificio" (el programa). </p>
+            <p> Las <b>funciones</b> son porciones de código aisladas que realizan una acción concreta y constituyen los <b>módulos</b> (bloques) de un programa. Son especialmente útiles cuando es necesario repetir el mismo bloque de código varias veces a lo largo de un programa. En este simil, sería como si quisiéramos fabricar las puertas de nuestro edificio todas iguales. No tendría sentido diseñar de 0 cada puerta para cada habitación. Es mucho mejor encargar el diseño a una empresa y comprar las puertas que necesitemos cuando las necesitemos. Esto facilita la lectura del código así como su mantenimiento (si queremos modificar el diseño de la puerta, solo tenemos que pedirle a la empresa que lo modifique, no hay que modificar las puertas una por una).</p>
+            <p>Además se dice que las funciones actúan como "cajas negras", ya que el programa no tiene en cuenta lo que pasa dentro de la función, solo su resultado. En el ejemplo de la construcción del edificio, uno no sabe necesariamente como se construye la puerta, pero obtiene la puerta, que es lo que importa.</p>
+            <p>Es frecuente escuchar el nombre de métodos cuando se habla de funciones. Son lo mismo estructuralmente, la diferencia es el paradigma de programación en el que se utilizan. En programación estructurada, estos bloques de código se llaman funciones, mientras que en programación orientada a objetos (POO) se denominan métodos.</p>
+            <p>Las funciones pueden o no retornar un valor cuando se las llama. Un ejemplo de función que no retorna un valor es una en la que quieres mostrar algo por pantalla. </p>
+            <p>Las funciones pueden ser llamadas por el código principal. Para esto, asignamos la función a una variable de nuestro módulo principal de la siguiente manera:</p>
+            <pre> 
+                public static int operacionSumar (int sumando1, int sumando2){
+ 
+                    int suma = sumando1 + sumando2;
+
+                    return suma;
+
+                  }
+            </pre>
+           <p>Vamos a desgranar su sintaxis:</p>
+           <ul>
+           <li><p><b>public</b> es un modificador de acceso. Le indica a Java qué partes del programa tendrán acceso al funcionamiento interno de la función. Lo veremos a profundidad cuando hablemos de programación orientada a objetos.</p></li>
+           <li><p><b>static</b> es una palabra reservada que indica que estamos ante un método estático. Te habrás quedado igual, de nuevo lo veremos en programación orientada a objetos. Lo único importante aquí es que las funciones que retornan valores llevan <b>static</b> mientras que las que no retornan valores llevan <b>void</b>.</p></li>
+           <li>    <p><b>int</b> es el tipo de dato que va a enviar la función una vez finalice su ejecución. Si no retorna ningún valor, no se pone el tipo de dato (porque la nada no tiene tipo de dato).</p></li>
+           <li>      <p><b>operacionSumar</b> es el nombre de la función. Debe estar en infinitivo.</p></li>
+           <li>     <p>(<b>int sumando1, int sumando2</b>) son los parámetros de entrada de la función. Llevan especificados el tipo de dato ya que son las variables con las que trabajará nuestra función. Como son variables exclusivas de la función, se denominan variables locales. Las variables locales solo pueden ser utilizadas en el bloque de código en el que han sido declaradas, y en ningún otro. Los parámetros de entrada reciben una copia del valor de las variables de entrada (las variables de la función principal) y es el valor que tienen durante la ejecución del código de la función. A esta característica se la denomina paso por valor o paso por copia, ya que su valor es una copia del valor de la variable de entrada.</p></li>
+           <li>        <p><b>return suma</b> indica que la función devuelve un valor, y que este valor es el que está alojado en la variable "suma".</p></li><br>
+        </ul>
+            <p>El orden de ejecución del programa es importante para entender cómo actúan las funciones. El programa se ejecuta desde su bloque principal (main) de forma secuencial (línea por línea) hasta que llega a una variable a la que se le ha asignado el nombre de una función:</p>
+            <pre>
+
+                public static int operacionSumar (int sumando1, int sumando2){
+
+                    int suma = sumando1 + sumando2;
+
+                    return suma;
+
+                }
+                
+                public static void main (String[] args){
+                    <span class="declaracion"> 
+                    int variable1 = 5;
+                    int variable2 = 10;
+                    int sumaVariables;</span>
+
+                    System.out.println("Buenos días, me gustaría saber la suma de " + variable1 + " + " + variable2);
+                    <span class="funcionColor">
+                    sumaVariables = operacionSumar(variable1+variable2);
+                </span>
+                    System.out.println(sumaVariables);
+
+                    System.out.println("Fin de la ejecución del programa");
+                }
+
+            </pre>
+            <ul>
+            <li><p>En verde, tendríamos las variables declaradas del módulo principal. Les he asignado un valor manualmente, pero perfectamente puede utilizarse el Scanner para leer un valor por teclado y asignárselo. </p></li>
+            <li>     <p>Tras la declaración de variables, el programa muestra por pantalla el texto "Buenos días, me gustaría saber la suma de 5 + 10".</p></li>
+                <li>      <p>En azul, se observa cómo se asigna la función "operacionSumar" a la variable suma. Para ello, se escriben en los paréntesis las variables que se desean introducir en la función (en este caso para que se sumen), que deben de coincidir en cantidad, y en tipo, para que el programa prosiga. Efectivamente, la cantidad (2 variables separadas por comas) y el tipo de las variables (int) coinciden con los de las función "operacionSumar", por lo que el programa continúa.</p></li>
+                    <li>     <p>El programa da un salto y se dirige a la función "operacionSumar". Los valores de las variables "variable1" (5) y "variable2" (10) se copian dentro de los parámetros de entrada "sumando1" y "sumando2", respectivamente. Ahora "sumando1 = 5" y "sumando2 = 10". Se procede a la ejecución del código de la función (suma = 15).</p></li>
+                        <li>    <p>Después, la función retorna el valor de la variable "suma" (15) al módulo principal. Esto significa que, donde está el nombre de la función, aparece ahora el valor de la variable "suma". Es decir, ahora "sumaVariables = 15".</p></li>
+                            <li>   <p>El programa vuelve al bloque principal y la siguiente instrucción es mostrar por pantalla el valor "15".</p>
+                               <li> <p>Por último, se muestra por pantalla "Fin de la ejecución del programa" y el programa termina.</p></li>
+                            </ul>
+           <br>
+           <p>Hay funciones que no retornan ningun valor, simplemente ejecutan una acción. Por ejemplo:</p>
+           <pre>
+               
+            public static void saludar (int veces){
+
+                int indice = 0;
+
+                while(indice<\veces){
+                    System.out.println("Hola Jorge :)")
+                    indice++;
+                }
+
+            }
+            
+            public static void main (String[] args){
+                <span class="declaracion"> 
+                int saludarVariasVeces;
+                int vecesSaludo = 5;
+                </span><span class="funcionColor">
+                saludarVariasVeces = saludar(vecesSaludo);
+            </span>
+              System.out.println("Fin de la ejecución del programa");
+            }
+
+           </pre>
+           <ul>
+            <li> El programa inicia declarando las variables "saludarVariasVeces" y "vecesSaludo". "vecesSaludo" se inicializa, su valor es 5. </li>
+            <li>A la variable "saludarVariasVeces" se le asigna (se llama, se invoca) la función "saludar" y se le indica la variable de entrada "vecesSaludo" que coincide en tipo con el parámetro de entrada de la función.</li>
+            <li>La ejecución del programa salta a la función "saludar", se copia el valor de la variable de entrada en el parámetro de entrada y entra en un bucle que se ejecutará hasta que el indice sea igual al número de veces indicado en el parámetro de entrada "veces" (5). Cada iteración (vuelta) del bucle imprime por pantalla la frase "Hola Jorge :)" e incrementa el valor del índice en 1.</li>
+            <li>Por tanto, lo que se vería por pantalla sería lo siguiente:</li>
+            <p>"Hola Jorge :)" *El valor de la variable índice aumenta en 1 (indice = 0+1 = 1)*</p>
+            <p>"Hola Jorge :)" *El valor de la variable índice aumenta en 1 (indice = 1+1 = 2)*</p>
+            <p>"Hola Jorge :)" *El valor de la variable índice aumenta en 1 (indice = 2+1 = 3)*</p>
+            <p>"Hola Jorge :)" *El valor de la variable índice aumenta en 1 (indice = 3+1 = 4)*</p>
+            <p>"Hola Jorge :)" *El valor de la variable índice aumenta en 1 (indice = 4+1 = 5)*. Como 5 no es menor que 5, sale del bucle y vuelve al módulo principal.</p>
+            <li><p>Por último, se muestra por pantalla "Fin de la ejecución del programa" y el programa termina.</p></li>
+
+
+           </ul>
+        </div>
     
+        <div class="texto">
+            <h3>Ejercicios</h3> 
+        
+            <p>Primero haz un esquema a papel de qué variables necesitas, qué estructuras (si fueran necesarias) y el orden en el que vas a utilizarlas. Después escribe el código en un bloc de notas, no utilices Eclipse. Cuando creas que lo has terminado, copia y pega el código a Eclipse. Recuerda que los exámenes son a papel, así que mejor estar preparados :) Y hazte un favor a ti misma/o: <strong>no uses ChatGPT, por tentador que sea</strong>. El cerebro es un músculo, cuanto más queme más crece. Si ves que te atascas con algún ejercicio no te agobies, dejalo apartado e inténtalo más tarde (o al día siguiente).</p>  
+    
+            <p>1. Diseña una funión de nombre <i><b>eco</b></i> a la que se le pase como parámetro un número n, y muestra por pantalla n veces el mensaje "Eco..."</p>
+            <p>2. Escribe una función a la que se le pasen dos enteros y muestre todos los números comprendidos entre ellos.</p>
+            <p>3. Realiza una función que calcule y muestre el área o el volumen de un cilindro, según se especifique. Para distinguir un caso de otro se le pasará como opción un número 1 (para el área) o 2 (para el volumen). Además, hay que pasarle a la función el radio de la base y la altura.</p>
+            <ul>
+        <li>area = 2π * radio * (altura + radio)</li>
+        <li>volumen = π * radio<sup>2</sup> * altura</li> 
+    </ul>
+            <p>4. Diseña una función que recibe como parámetros dos números enteros y devuelva el más grande de los dos.
+                </p>
+            <p>5. Crea una función que, mediante un booleano, indique si el carácter que se pasa como parámetro de entrada corresponde a una vocal.</p>
+            <p>6. Diseña una función con la estructura: </p>
+            <pre>
+                public static boolean esPrimo (int num){
 
+                }
 
-
-
+            </pre>
+            <p>que devolverá "true" si "num" es primo y "false" en caso contrario.</p>
+            <p>7. Escribir una función a la que se le pase un número entero y devuelva el número de divisores primos que tiene.</p>
+        </div>
+    
+    </section>
+    
 </main>
 
 
